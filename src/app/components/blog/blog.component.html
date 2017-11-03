@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-7">
+    <h3>Formulario Post</h3>
+    <form (ngSubmit)="onSubmit(blogForm)" #blogForm="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Titulo</label>
+        <input type="text" class="form-control" name="titulo" [(ngModel)]="blog.titulo" aria-describedby="Describe el titulo" placeholder="Introduce el titulo">
+        <small id="emailHelp" class="form-text text-muted">Titulo cabecera del post</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Contenido del post</label>
+        <simple-tiny [elementId]="'blogId'" (onEditorKeyup)="keyupHandlerFunction($event)">
+        </simple-tiny>
+      </div>
+
+      <div class="form-group">
+        <label>Imagen principal</label>
+        <input type="file" class="form-control" name="imagen"  aria-describedby="Imagen principal" placeholder="Selecciona la imagen principal">
+        <small id="emailHelp" class="form-text text-muted">Imagen pricipal del post</small>
+      </div>
+    
+
+      <button *ngIf="!blog.id" type="submit" class="btn btn-outline-primary btn-block">Crear</button>
+      <button *ngIf="blog.id" type="button" (click)="updateData()" class="btn btn-outline-success btn-block">Actualizar</button>
+
+    </form>
+
+  </div>
+  <div class="col-5">
+    <h3>Listado ultimos post</h3>
+    <table class="table table-sm table-inverse">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogs; let i = index">
+
+          <td >{{blog.titulo}}</td>
+          <td>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a (click)="update(i)"><i class="fa fa-pencil"></i></a>
+              </li>
+              <li class="list-inline-item">
+                  <a (click)="deleteBlog(i)"><i class="fa fa-trash"></i></a>
+              </li>
+
+            </ul>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
