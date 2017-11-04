@@ -15,7 +15,8 @@ export class PortfolioComponent implements OnInit {
   public portfolio = {
     id: 0,
     titulo: '',
-    categoria: ''
+    categoria: '',
+    imagen: ''
  };
   constructor(private _portfolio: PortfolioService, private _upload: UploadService) {
     this.getPortfolios();
@@ -38,8 +39,8 @@ export class PortfolioComponent implements OnInit {
       this.portfolios = data;
       this._upload.makeFileRequest(this.portfolios[0]['id'], this.filesToUpload, 'imagen', 'portfolio')
       .then((result: any) => {
-        console.log(result);
-       }, error => {
+        this.portfolios[0]['imagen'] = result;
+        }, error => {
          console.log(error);
        });
       });

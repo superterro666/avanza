@@ -5,7 +5,7 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Titulo</label>
           <input type="text" class="form-control" name="titulo" [(ngModel)]="portfolio.titulo" aria-describedby="Describe el titulo" placeholder="Introduce el titulo">
-          <small id="emailHelp" class="form-text text-muted">Titulo cabecera del trabajot</small>
+          <small id="emailHelp" class="form-text text-muted">Titulo cabecera del trabajo</small>
         </div>
 
         <div class="form-group">
@@ -29,9 +29,10 @@
     </div>
     <div class="col-5">
       <h3>Listado ultimos trabajos</h3>
-      <table class="table table-sm table-inverse">
+      <table class="table table-sm">
         <thead>
           <tr>
+            <th>Cabecera</th>
             <th>Titulo</th>
             <th>Actions</th>
   
@@ -39,7 +40,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let porfolio of portfolios; let i = index">
-  
+            <td><img width="50" height="50" class="img-circle" *ngIf="porfolio.imagen != ''" src="http://localhost/avanza/uploads/{{porfolio.imagen}}"></td>
             <td >{{porfolio.titulo}}</td>
             <td>
               <ul class="list-inline">
@@ -48,6 +49,9 @@
                 </li>
                 <li class="list-inline-item">
                     <a (click)="deleteBlog(i)"><i class="fa fa-trash"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a [routerLink]="['\show', portfolio ]"><i class="fa fa-eye"></i></a>
                 </li>
   
               </ul>

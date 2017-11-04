@@ -18,6 +18,7 @@ import { LoginService } from './components/servicios/login.service';
 import { BlogService } from './components/servicios/blog.service';
 import { PortfolioService } from './components/servicios/portfolio.service';
 import { UploadService } from './components/servicios/upload.service';
+import { ShowComponent } from './components/show/show.component';
 
 
 
@@ -28,7 +29,8 @@ import { UploadService } from './components/servicios/upload.service';
     NavbarComponent,
     BlogComponent,
     SimpleTinyComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,
