@@ -31,6 +31,7 @@
     <table class="table table-sm table-inverse">
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Titulo</th>
           <th>Actions</th>
 
@@ -38,7 +39,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let blog of blogs; let i = index">
-
+          <td><img *ngIf="blog.imagen!=''" src="http://localhost/avanza/uploads/{{blog.imagen}}"/></td>
           <td >{{blog.titulo}}</td>
           <td>
             <ul class="list-inline">
