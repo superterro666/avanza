@@ -14,7 +14,7 @@ import { UploadService } from '../servicios/upload.service';
 
 export class BlogComponent implements OnInit {
   public filesToUpload: Array<File>;
-  public texto: string;
+  public texto: any;
   private blogs: any = [];
   public blog = {
     id: 0,
@@ -30,6 +30,7 @@ export class BlogComponent implements OnInit {
   }
 
   keyupHandlerFunction($event) {
+    console.log($event);
     this.texto = $event;
   }
 
@@ -39,6 +40,8 @@ export class BlogComponent implements OnInit {
          titulo: blogForm.value.titulo,
          texto: this.texto
       };
+
+      console.log(blog);
       this._blog.setBlog(blog);
       this.blog.id = 0;
       this.blog.titulo = '';
@@ -60,6 +63,7 @@ export class BlogComponent implements OnInit {
     this._blog.getBlogs();
     this._blog.listaBlog$.subscribe(data => {
     this.blogs = data;
+    console.log(data)
     });
   }
 

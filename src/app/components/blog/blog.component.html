@@ -15,7 +15,7 @@
 
       <div class="form-group">
         <label>Imagen principal</label>
-        <input type="file" class="form-control" name="imagen"  aria-describedby="Imagen principal" placeholder="Selecciona la imagen principal">
+        <input type="file" class="form-control" name="imagen"  (change)="fileChangeEvent($event)"  aria-describedby="Imagen principal" placeholder="Selecciona la imagen principal">
         <small id="emailHelp" class="form-text text-muted">Imagen pricipal del post</small>
       </div>
     
@@ -38,8 +38,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let blog of blogs; let i = index">
-          <td><img *ngIf="blog.imagen!=''" src="http://localhost/avanza/uploads/{{blog.imagen}}"/></td>
+        <tr *ngFor="let blog of blogs; let i = index" >
+          <td><img width="50" height="50" class="img-circle"   *ngIf="blog.imagen != ''" src="http://localhost/avanza/web/uploads/images/{{blog.imagen}}"></td>
           <td >{{blog.titulo}}</td>
           <td>
             <ul class="list-inline">
