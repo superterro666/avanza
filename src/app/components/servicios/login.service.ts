@@ -15,8 +15,7 @@ export class LoginService {
 
   private loginSource = new Subject<boolean>();
   public isLogin$ = this.loginSource.asObservable();
-  
- constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(user: string, password: string) {
 
@@ -30,8 +29,9 @@ export class LoginService {
         this.setToken(data['token']);
         this.setIdentity(data['user']);
         this.loginSource.next(true);
+        } else {
+        this.loginSource.next(false);
       }
-      this.loginSource.next(false);
     }, error => {
       console.log(error);
     });

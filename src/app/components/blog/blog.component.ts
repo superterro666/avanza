@@ -63,7 +63,6 @@ export class BlogComponent implements OnInit {
     this._blog.getBlogs();
     this._blog.listaBlog$.subscribe(data => {
     this.blogs = data;
-    console.log(data)
     });
   }
 
