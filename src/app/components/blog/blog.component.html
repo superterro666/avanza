@@ -1,20 +1,20 @@
 <div class="row">
-  <div class="col-7">
-    <h3>Formulario Post</h3>
-    <form (ngSubmit)="onSubmit(blogForm)" #blogForm="ngForm">
+  <div class="col-7 noPadDer">
+    <h3 class="mTop15 mBot15 colortxtoscuro">Formulario Post</h3>
+    <form (ngSubmit)="onSubmit(blogForm)" #blogForm="ngForm" class="rallaMedio">
       <div class="form-group">
-        <label for="exampleInputEmail1">Titulo</label>
+        <label class="colortxt" for="exampleInputEmail1">Titulo</label>
         <input type="text" class="form-control" name="titulo" [(ngModel)]="blog.titulo" aria-describedby="Describe el titulo" placeholder="Introduce el titulo">
         <small id="emailHelp" class="form-text text-muted">Titulo cabecera del post</small>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Contenido del post</label>
-        <simple-tiny [elementId]="'blogId'" (onEditorKeyup)="keyupHandlerFunction($event)">
+        <label class="colortxt" for="exampleInputEmail1">Contenido del post</label>
+        <simple-tiny [elementId]="'blogId'" class="borde-panel" (onEditorKeyup)="keyupHandlerFunction($event)">
         </simple-tiny>
       </div>
 
       <div class="form-group">
-        <label>Imagen principal</label>
+        <label class="colortxt" >Imagen principal</label>
         <input type="file" class="form-control" name="imagen"  (change)="fileChangeEvent($event)"  aria-describedby="Imagen principal" placeholder="Selecciona la imagen principal">
         <small id="emailHelp" class="form-text text-muted">Imagen pricipal del post</small>
       </div>
@@ -27,8 +27,8 @@
 
   </div>
   <div class="col-5">
-    <h3>Listado ultimos post</h3>
-    <table class="table table-sm table-inverse">
+    <h3 class="mTop15 mBot15 colortxtoscuro">Listado ultimos post</h3>
+    <table class="table table-sm tablaRedonda">
       <thead>
         <tr>
           <th>Imagen</th>
@@ -39,7 +39,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let blog of blogs; let i = index" >
-          <td><img width="50" height="50" class="img-circle"   *ngIf="blog.imagen != ''" src="http://localhost/avanza/web/uploads/images/{{blog.imagen}}"></td>
+          <td><img width="50" height="50" class="img-circle"   *ngIf="blog.imagen != ''" src="http://localhost/avanza-backend/web/uploads/images/{{blog.imagen}}"></td>
           <td >{{blog.titulo}}</td>
           <td>
             <ul class="list-inline">
