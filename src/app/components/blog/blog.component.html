@@ -49,6 +49,9 @@
               <li class="list-inline-item">
                   <a (click)="deleteBlog(i)"><i class="fa fa-trash"></i></a>
               </li>
+              <li class="list-inline-item">
+                  <a [routerLink]="['/show', blog.id, 'blog']">Ver</a>
+              </li>
 
             </ul>
           </td>

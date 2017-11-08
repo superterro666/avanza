@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
 @Injectable()
 export class LoginService {
 
-  private url_base = 'http://localhost/avanza-backend/web/app_dev.php/login';
-  private url_checktoken = 'http://localhost/avanza-backend/web/app_dev.php/checktoken';
+  private url_base = 'http://localhost/avanza/web/app_dev.php/login';
+  private url_checktoken = 'http://localhost/avanza/web/app_dev.php/checktoken';
   private token: string;
   private identity: any;
 
   private loginSource = new Subject<boolean>();
   public isLogin$ = this.loginSource.asObservable();
+
+  private correoSource = new Subject<Number>();
+  public correo$ = this.correoSource.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
 
   login(user: string, password: string) {
@@ -28,6 +31,7 @@ export class LoginService {
       if (data['code'] === 200) {
         this.setToken(data['token']);
         this.setIdentity(data['user']);
+        this.correoSource.next(data['user'][0]);
         this.loginSource.next(true);
         } else {
         this.loginSource.next(false);
@@ -40,6 +44,7 @@ export class LoginService {
   checktoken() {
     this.http.get(this.url_checktoken + '?token=' + this.getToken()).subscribe(data => {
       if (data['code'] === 200) {
+        this.correoSource.next(data['correo']);
         this.loginSource.next(true);
       } else {
         this.loginSource.next(false);

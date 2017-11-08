@@ -15,7 +15,7 @@ export class PortfolioComponent implements OnInit {
   public portfolio = {
     id: 0,
     titulo: '',
-    categoria: '',
+    texto: '',
     imagen: ''
  };
   constructor(private _portfolio: PortfolioService, private _upload: UploadService) {
@@ -28,13 +28,13 @@ export class PortfolioComponent implements OnInit {
     if (portfolioForm.valid) {
        const portfolio = {
          titulo: portfolioForm.value.titulo,
-         categoria: portfolioForm.value.categoria
+         texto: portfolioForm.value.texto
       };
 
       this._portfolio.setPortfolio(portfolio);
       this.portfolio.id = 0;
       this.portfolio.titulo = '';
-      this.portfolio.categoria = '';
+      this.portfolio.texto = '';
       this._portfolio.listaPortfolio$.subscribe(data => {
       this.portfolios = data;
       this._upload.makeFileRequest(this.portfolios[0]['id'], this.filesToUpload, 'imagen', 'portfolio')
@@ -65,14 +65,14 @@ export class PortfolioComponent implements OnInit {
     const datos = this.portfolios[id];
     this.portfolio.id = datos['id'];
     this.portfolio.titulo = datos['titulo'];
-    this.portfolio.categoria = datos['categoria'];
+    this.portfolio.texto = datos['texto'];
  }
 
  updateData() {
    this._portfolio.updatePortfolio(this.portfolio);
    this.portfolio.id = 0;
    this.portfolio.titulo = '';
-   this.portfolio.categoria = '';
+   this.portfolio.texto = '';
    this._portfolio.portfolio$.subscribe(data => {
    this.portfolios = data;
    });
@@ -83,7 +83,7 @@ export class PortfolioComponent implements OnInit {
    this._portfolio.deletePortfolio(this.portfolios[id]['id']);
    this.portfolio.id = 0;
    this.portfolio.titulo = '';
-   this.portfolio.categoria = '';
+   this.portfolio.texto = '';
    this._portfolio.listaPortfolio$.subscribe(data => {
    this.portfolios = data;
    });

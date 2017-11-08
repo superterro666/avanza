@@ -9,7 +9,7 @@ import {SimpleTinyComponent } from './components/blog/simple-tiny.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ShowComponent } from './components/show/show.component';
-
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 // ROUTING
 import { APP_ROUTING } from './app.routes';
 
@@ -19,6 +19,9 @@ import { BlogService } from './components/servicios/blog.service';
 import { PortfolioService } from './components/servicios/portfolio.service';
 import { UploadService } from './components/servicios/upload.service';
 import { AuthService } from './components/servicios/auth.service';
+import { MensajesService } from './components/servicios/mensajes.service';
+import { MensajeComponent } from './components/mensaje/mensaje.component';
+
 
 
 
@@ -31,7 +34,9 @@ import { AuthService } from './components/servicios/auth.service';
     BlogComponent,
     SimpleTinyComponent,
     PortfolioComponent,
-    ShowComponent
+    ShowComponent,
+    MensajesComponent,
+    MensajeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { AuthService } from './components/servicios/auth.service';
   BlogService,
   PortfolioService,
   UploadService,
-  AuthService],
+  AuthService,
+  MensajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

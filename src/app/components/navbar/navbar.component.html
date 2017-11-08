@@ -14,6 +14,9 @@
           <li class="nav-item">
             <a class="nav-link activo" [routerLink]="['\portfolio']">Portfolio</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link activo" [routerLink]="['\mensajes']">Mensajes</a><i>{{mensajes}}</i>
+          </li>
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="logueado">
           <li class="nav-item">
